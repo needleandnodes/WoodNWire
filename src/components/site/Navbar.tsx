@@ -37,7 +37,7 @@ export function Navbar() {
         </div>
       </nav>
       {/* saloon doors */}
-      <div className={`mx-auto mt-2 flex max-w-5xl justify-center gap-1 md:hidden ${open ? "" : "pointer-events-none"}`} style={{ perspective: 600 }}>
+      <div className={`absolute inset-x-3 top-full mx-auto mt-2 flex max-w-5xl justify-center gap-1 md:hidden ${open ? "" : "pointer-events-none"}`} style={{ perspective: 600 }}>
         {[0, 1].map((side) => (
           <div
             key={side}
