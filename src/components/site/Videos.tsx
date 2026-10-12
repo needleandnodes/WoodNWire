@@ -58,7 +58,7 @@ export function Videos() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => e?.isIntersecting && setVis(true), { threshold: 0.15 });
+    const io = new IntersectionObserver(([e]) => e?.isIntersecting && setVis(true), { threshold: 0.01 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
