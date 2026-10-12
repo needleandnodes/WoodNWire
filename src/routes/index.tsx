@@ -1,24 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/site/Navbar";
+import { Hero } from "@/components/site/Hero";
+import { About } from "@/components/site/About";
+import { Videos } from "@/components/site/Videos";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Wood N' Wire — Duo acústico | Um som gigante em dois" },
+      { name: "description", content: "Violão, contrabaixo 3/4, gaita e duas vozes: Beatles, Creedence e Dylan com tempero country e blues-rock. Contrate a Wood N' Wire." },
+      { property: "og:title", content: "Wood N' Wire — Um som gigante em dois" },
+      { property: "og:description", content: "Duo acústico de clássicos dos anos 60 e 70 com sabor country-rock e blues-rock." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="grain overflow-x-clip">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Videos />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }
