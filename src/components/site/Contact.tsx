@@ -18,7 +18,7 @@ type Form = z.infer<typeof schema>;
 
 const field = "w-full rounded-lg border-[3px] border-ink bg-cream px-3 py-2.5 text-lg shadow-hard-sm outline-none transition focus:-translate-y-0.5 focus:bg-cloud focus:ring-4 focus:ring-chili/40";
 
-function Field({ label, error, children, className = "" }: { label: string; error?: string; children: React.ReactNode; className?: string }) {
+function Field({ label, error, children, className = "" }: { label: string; error?: string | undefined; children: React.ReactNode; className?: string }) {
   return (
     <label className={`block ${className}`}>
       <span className="font-display mb-1 block text-sm uppercase tracking-wide">{label}</span>
