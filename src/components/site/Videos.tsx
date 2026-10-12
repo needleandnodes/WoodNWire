@@ -66,7 +66,7 @@ export function Videos() {
   return (
     <section id="videos" className="relative bg-chili pb-28 pt-6">
       <Scallop fill="var(--chili)" className="absolute -top-8 left-0 h-9 w-full" />
-      <div ref={ref} className={`iris-reveal ${vis ? "is-visible" : ""} relative mx-auto max-w-6xl px-4 pt-10`}>
+      <div ref={ref} className="relative mx-auto max-w-6xl px-4 pt-10 transition-[clip-path] duration-1000 ease-in-out motion-reduce:!transition-none" style={{ clipPath: vis ? "circle(150% at 50% 50%)" : "circle(0% at 50% 50%)" }}>
         <div className="halftone-light absolute inset-0 opacity-40" />
         <div className="relative flex flex-col items-center text-center">
           <span className="font-display rounded-full border-[3px] border-ink bg-sun px-4 py-1 text-sm uppercase">Sessão drive-in</span>
