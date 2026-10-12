@@ -28,7 +28,7 @@ function Tv({ v, i }: { v: (typeof videos)[number]; i: number }) {
               <span className="toon-sm relative mt-3 flex h-16 w-16 items-center justify-center rounded-full bg-chili transition-transform group-hover:rotate-90 group-hover:scale-110">
                 <svg viewBox="0 0 60 60" className="h-full w-full" aria-hidden>
                   {[0, 60, 120, 180, 240, 300].map((a) => (
-                    <circle key={a} cx={30 + 18 * Math.cos((a * Math.PI) / 180)} cy={30 + 18 * Math.sin((a * Math.PI) / 180)} r="5" fill="var(--ink)" />
+                    <circle key={a} cx={Math.round(30 + 18 * Math.cos((a * Math.PI) / 180))} cy={Math.round(30 + 18 * Math.sin((a * Math.PI) / 180))} r="5" fill="var(--ink)" />
                   ))}
                   <path d="M25 21 L40 30 L25 39 Z" fill="var(--cream)" stroke="var(--ink)" strokeWidth="2" />
                 </svg>
@@ -58,9 +58,12 @@ export function Videos() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => e?.isIntersecting && setVis(true), { threshold: 0.01 });
-    io.observe(el);
-    return () => io.disconnect();
+    const check = () => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.85) setVis(true);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    return () => window.removeEventListener("scroll", check);
   }, []);
 
   return (
